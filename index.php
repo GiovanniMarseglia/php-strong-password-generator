@@ -5,7 +5,7 @@ $num=isset($_GET["num"]) ? 'true' : 'false';
 $char=isset($_GET["char"]) ? 'true' : 'false';
 $sim=isset($_GET["sim"]) ? 'true' : 'false';
 $dup=$_GET["radio1"];
-var_dump($num,$char,$sim);
+var_dump($num,$char,$sim,$dup);
 
 include __DIR__ .'/functions.php' ; 
 
@@ -14,7 +14,7 @@ $_SESSION["char"] = $char;
 $_SESSION["sim"] = $sim;
 $_SESSION["dup"] = $dup;
 
-if( $num==false && $char==false && $sim==false ){
+if( $num=="false" && $char=="false" && $sim=="false" ){
     
     $lunghezza=RandomPass($lunghezza);
     var_dump($lunghezza);

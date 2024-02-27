@@ -45,7 +45,7 @@ function RandomExstra($lunghezza){
     
     
     function simboli(){
-        $sim ='@#?!*-';
+        $sim ='@#?!*-|\^£$"&)(';
     
         $value = rand(0, strlen($sim) - 1);
         $value = $sim[$value];
@@ -58,26 +58,59 @@ function RandomExstra($lunghezza){
     for ($i = 0; $i < $lunghezza; $i++) {
         $accesso = rand(0, 2);
         if($accesso == 0 && $_SESSION["num"]=='true'){
+            $provvisorio = numeri();
 
-            $value .= numeri();
+            if($_SESSION["dup"] == 'no'){
+                if(strpos($value, $provvisorio) === false){
+                    $value .= $provvisorio; 
+                }else{
+                    $i--;
+                }
+                
+
+            }else{
+                $value .=$provvisorio; 
+            }
+
         }elseif($accesso == 1 && $_SESSION["char"]=='true'){
           
-            $value .= caratteri();
+            $provvisorio = caratteri();
+
+            if($_SESSION["dup"] == 'no'){
+                
+                if(strpos($value, $provvisorio) === false){
+                    $value .= $provvisorio; 
+                    
+                }else{
+                    $i--;
+                   
+                }
+                
+
+            }else{
+                
+                $value .=$provvisorio; 
+            }
           
         }elseif($accesso == 2 && $_SESSION["sim"]=='true'){
-            $value .= simboli();
+            $provvisorio = simboli();
+
+            if($_SESSION["dup"] == 'no'){
+                if(strpos($value, $provvisorio) === false){
+                    $value .= $provvisorio; 
+                }else{
+                    $i--;
+                }
+                
+
+            }else{
+                $value .=$provvisorio; 
+            }
         }else{
             $i--;
         } 
         
 
-    }
-    
-    
+    } 
     return $value;
-
-    
-
 }
-
-
