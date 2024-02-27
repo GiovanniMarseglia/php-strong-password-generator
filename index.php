@@ -45,7 +45,7 @@ if (isset($_GET['submit'])) {
     <form action="./index.php" method="get" >
 
         <label for="lunghezza" style="display:block; margin-bottom:20px">Inserisci la lunghezza desiderata per generare una password che sia compresa tra 5 e 15 caratteri</label>
-        <input type="number" name="lunghezza" min="5" max="15" require style="display:block; margin-bottom:20px">
+        <input type="number" name="lunghezza" min="5" max="10" require style="display:block; margin-bottom:20px">
         <label for="num" style="display:block;">numeri</label>
         <input type="checkbox" name="num" style="display:block; margin-bottom:20px">
         <label for="num"  style="display:block;">caratteri</label>
