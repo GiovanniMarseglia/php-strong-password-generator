@@ -1,6 +1,6 @@
 <?php
-
-$res=$_SESSION["res"];
+session_start();
+$lunghezza=$_SESSION["res"];
 
 ?>
 
@@ -14,10 +14,14 @@ $res=$_SESSION["res"];
 </head>
 <body>
     
-    <h1><?php echo $res?></h1>
+    <h1><?php echo $lunghezza?></h1>
 
     <button>
         <a href="./index.php" style="text-decoration:none" >Indietro</a>
+        <?php
+        session_unset();
+        session_destroy();
+        ?>
     </button>
 </body>
 </html>

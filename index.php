@@ -5,7 +5,6 @@ $num=isset($_GET["num"]) ? 'true' : 'false';
 $char=isset($_GET["char"]) ? 'true' : 'false';
 $sim=isset($_GET["sim"]) ? 'true' : 'false';
 $dup=$_GET["radio1"];
-var_dump($num,$char,$sim,$dup);
 
 include __DIR__ .'/functions.php' ; 
 
@@ -17,7 +16,6 @@ $_SESSION["dup"] = $dup;
 if( $num=="false" && $char=="false" && $sim=="false" ){
     
     $lunghezza=RandomPass($lunghezza);
-    var_dump($lunghezza);
 }else{
     $lunghezza=RandomExstra($lunghezza);
 }
@@ -25,9 +23,12 @@ if( $num=="false" && $char=="false" && $sim=="false" ){
 $_SESSION["res"] = $lunghezza;
 
 
+if (isset($_GET['submit'])) {
+    header("Location: result.php");
+  }
+
+
 ?>
-
-
 
 
 
@@ -56,12 +57,11 @@ $_SESSION["res"] = $lunghezza;
         <input type="radio" name="radio1" value="si" style="display:block; margin-bottom:20px">
         <label for="radio2" >no</label>
         <input type="radio" name="radio1" value="no" style="display:block; margin-bottom:20px" checked>
-        <button>Invio </button>
+        <button type="submit" name="submit">Invio </button>
         
         
     </form>
 
-    <h1><?php echo $lunghezza?></h1>
 
 </body>
 </html>
