@@ -9,17 +9,34 @@ function RandomPass($lunghezza)
     
     $chars='0123456789@#?!*-abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789';
 
-
+    $value= '';
     $randomchar = '';
 
     for ($i = 0; $i < $lunghezza; $i++) {
 
-        $value = rand(0, strlen($chars) - 1);
-        $randomchar .= $chars[$value];
+        
+        $prov = rand(0, strlen($chars) - 1);
+        $provvisorio = $chars[$prov];
 
+            
+
+            if($_SESSION["dup"] == 'no'){
+                if(strpos($value, $provvisorio) === false){
+                    $value .= $provvisorio; 
+                }else{
+                    $i--;
+                }
+                
+
+            }else{
+                $value .=$provvisorio; 
+            }
+
+
+       
     }
    
-    return $randomchar;
+    return $value;
     
 
 }
